@@ -19,25 +19,20 @@ int main() {
     
     int t;
     cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        vector<int> v(n);
-        for(int i=0;i<n;++i)
-            cin >> v[i];
-
-        int ans=0;
-        int c=1;
-        for(int i=1;i<n;++i) {
-            if(v[i]==v[i-1])
-                ++c;
-            else {
-                ans=max(c,ans);
-                c=1;
-            }
+    while(t--) {
+        ll a,b;
+        cin >> a >> b;
+        vector<ll> n(a);
+        for(ll i=0;i<a;++i) {
+            cin >> n[i];
+        }
+        
+        ll ans=0;
+        sort(all(n),greater<ll>());
+        for(ll i=0;i<b+1;++i) {
+            ans+=n[i]; 
         }
 
-        ans=max(c,ans);
         cout << ans << nl;
 
     }

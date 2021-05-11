@@ -22,23 +22,21 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        vector<int> v(n);
-        for(int i=0;i<n;++i)
-            cin >> v[i];
-
-        int ans=0;
-        int c=1;
-        for(int i=1;i<n;++i) {
-            if(v[i]==v[i-1])
-                ++c;
-            else {
-                ans=max(c,ans);
-                c=1;
+        string s;
+        cin >> s;
+        string a="";
+        int ok=0;
+        for(int i=0;i<n;++i) {
+            if(a.find(s[i])<a[sz(a)-1]&&a[sz(a)-1]!=s[i]) {
+                cout << "NO" << nl; ok=1;break;
+                
             }
+
+            a+=s[i];
         }
 
-        ans=max(c,ans);
-        cout << ans << nl;
+        if(ok==0)
+            cout << "YES" << nl;
 
     }
 

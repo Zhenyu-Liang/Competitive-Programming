@@ -8,6 +8,7 @@ typedef long double ld;
 #define pb push_back
 #define sw swap
 #define all(x) x.begin(),x.end()
+#define vt vector
 
 const char nl = '\n';
 
@@ -16,38 +17,35 @@ const char nl = '\n';
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    
-    int a, b;
+   
+    int a,b;
     cin >> a >> b;
     string n;
     cin >> n;
+
+    map<char,int> m;
     
-    string c="";
-    for(int i=0;i<sz(n);++i) {
-        if(c.find(n[i])==string::npos) {
-            c+=n[i];
-        }
+    int c=0;
+    for(int i=0;i<a;++i) {
+        if(n[i]==64+b)
+            ++c;
+        if(m.find(n[i])==m.end())
+            m[n[i]]=1;
+        else
+            m[n[i]]++;
     }
-     
-    if(sz(c)>=b) {
-        string ans="";
-        string t="";
-        for(int i=0;i<sz(n);++i) {
-            if(t.find(n[i])==string::npos&&(n[i]-64<=b)) {
-                t+=n[i];
-            }
 
-            if(sz(t)==b) {
-                ans+=t;
-                t="";
-            }
-        }
-
-        cout << sz(ans);
-    
-    } else {
+    vt<int> o;
+    map<char,int>::iterator it;
+    for(it=m.begin();it!=m.end();++it)
+        o.pb(it->second);
+    if(sz(m)<b) 
         cout << 0;
-    }; 
+
+    else
+        cout << b*(*min_element(all(o)));
+
+
 
     return 0;
 }

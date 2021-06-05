@@ -8,32 +8,36 @@ typedef long double ld;
 #define pb push_back
 #define sw swap
 #define all(x) x.begin(),x.end()
+#define rall(x) x.rbegin(),x.rend()
 #define vt vector
+#define gcd __gcd
+#define lcm(a,b) (a*b/__gcd(a,b))
 
 const char nl = '\n';
 
 // YAY:)
-int ok(char n) {
-    for(char i:"aeiou") {
-        if(n==i)
-            return 0;
-    }
-    
-    return 1;
-}
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     
-    string n;
+    int n;
     cin >> n;
+    string a;
+    cin >> a;
+    string ans;
+     
+    for(int i=0;i<n;++i) {
+       if(sz(a)%2==0)
+           ans=a[0]+ans;
+       else
+           ans+=a[0];
+        a.erase(a.begin());
 
-    for(int i=0;i<sz(n);++i) { 
-        if((ok(n[i])&&ok(n[i+1])&&ok(n[i+2]))&&!(n[i]==n[i+1]&&n[i+2]==n[i+1])) n.insert(i+=2," ");
     }
 
-    cout << n;
+    cout << ans;
+    
 
     return 0;
 }
